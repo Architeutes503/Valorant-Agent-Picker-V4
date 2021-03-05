@@ -27,8 +27,7 @@ print("The ValorantAgentPicker.py needs to be in the same directory as the locat
 
 locations = open("locations.txt", "w")
 
-agents = ["Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze",
-          "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
+agents = ["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
 
 for agent in agents:
     s = agent + "S"
