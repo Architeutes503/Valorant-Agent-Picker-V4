@@ -9,10 +9,10 @@ layout = [[sg.Text("Which agent do you want to play with?")],
           [sg.Combo(["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix",
                      "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru"], key='-agentSelect-')],
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
-          [sg.Button('Ok'), sg.Button('Choose location file'), sg.Button('Save locations'), sg.Button('Quit')]]
+          [sg.Button('Ok'), sg.Button('Choose location file'), sg.Button('Save locations'),  sg.Button('Quit')]]
 
 # Create the window
-window = sg.Window('Window Title', layout)
+window = sg.Window('Agent Picker', layout)
 
 # Display and interact with the Window using an Event Loop
 while True:
@@ -76,8 +76,3 @@ while True:
 window.close()
 
 
-# Open Filedialog
-# import PySimpleGUI as sg
-
-# filename = sg.popup_get_file('Enter the file you wish to process')
-# sg.popup('You entered', filename)
