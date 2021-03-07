@@ -26,8 +26,7 @@ while True:
 
     elif event == 'Save locations':
         print("Save locations")
-
-        # Saves the location of the cursor
+        
         class LocationSaver:
             def __init__(self, name):
                 self.name = name
@@ -36,36 +35,32 @@ while True:
                 self.mouseX, self.mouseY = pyautogui.position()
                 sg.popup(f"Done {name}.")
 
-        # Writes the cursor coordinates into a file
         class LocationWriter:
             def __init__(self, mouseX, mouseY):
                 self.mouseX = mouseX
                 self.mouseY = mouseY
+
                 locations.write(str(mouseX))
                 locations.write("\n")
                 locations.write(str(mouseY))
                 locations.write("\n")
 
-        # Explanation how the program works
-        sg.popup(
-            "This programm saves the location of all the agents and the lock in button.")
-        sg.popup("The locations get saved in the same folder this program is in.")
 
-        # Creates the file the locations get saved in.
+        #Explanation    
+        sg.popup("This programm saves the location of all the agents and the lock in button.")
+        sg.popup("The locations get saved in the same folder the AgentPicker.py is saved in.")
+
         locations = open("locations.txt", "w")
 
-        # List of all the agents in the game
-        agents = ["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen",
-                  "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
+        agents = ["Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze",
+                "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
 
-        # For loop to save the coordinates
         for agent in agents:
             s = agent + "S"
             w = agent + "W"
+
             s = LocationSaver(agent)
             w = LocationWriter(s.mouseX, s.mouseY)
-
-        sg.popup("All locations have been saved.")
 
     elif event == 'Ok':
         window['-OUTPUT-'].update('You successfully selected ' + values['-agentSelect-'])
