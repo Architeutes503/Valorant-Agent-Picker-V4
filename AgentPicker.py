@@ -4,6 +4,30 @@ import pyautogui
 import time
 
 
+# Classes
+class LocationSaver:
+    def __init__(self, name):
+        self.name = name
+        print(
+            f"Please hover you cursor over {name} and wait until you get a message box that sais, that it has been saved. You have 3 seconds.")
+        time.sleep(0.5)
+        self.mouseX, self.mouseY = pyautogui.position()
+        pyautogui.alert(f"Done {name}.")
+
+
+class LocationWriter:
+    def __init__(self, mouseX, mouseY):
+        self.mouseX = mouseX
+        self.mouseY = mouseY
+
+        locations.write(str(mouseX))
+        print(mouseX)
+        locations.write("\n")
+        locations.write(str(mouseY))
+        print(mouseY)
+        locations.write("\n")
+
+
 # Define the window's contents
 layout = [[sg.Text("Which agent do you want to play with?")],
           [sg.Combo(["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix",
@@ -26,34 +50,16 @@ while True:
 
     elif event == 'Save locations':
         print("Save locations")
-        
-        class LocationSaver:
-            def __init__(self, name):
-                self.name = name
-                sg.popup(f"Please hover you cursor over {name} and wait until you get a message box that sais, that it has been saved. You have 3 seconds.")
-                time.sleep(3)
-                self.mouseX, self.mouseY = pyautogui.position()
-                sg.popup(f"Done {name}.")
 
-        class LocationWriter:
-            def __init__(self, mouseX, mouseY):
-                self.mouseX = mouseX
-                self.mouseY = mouseY
-
-                locations.write(str(mouseX))
-                locations.write("\n")
-                locations.write(str(mouseY))
-                locations.write("\n")
-
-
-        #Explanation    
-        sg.popup("This programm saves the location of all the agents and the lock in button.")
-        sg.popup("The locations get saved in the same folder the AgentPicker.py is saved in.")
+        # Explanation
+        print("This programm saves the location of all the agents and the lock in button.")
+        print("The locations get saved in the same folder the ValorantAgentLocation.py is saved in.")
+        print("The ValorantAgentPicker.py needs to be in the same directory as the locations.txt is.\n")
 
         locations = open("locations.txt", "w")
 
         agents = ["Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze",
-                "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
+                  "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
 
         for agent in agents:
             s = agent + "S"
@@ -61,15 +67,18 @@ while True:
 
             s = LocationSaver(agent)
             w = LocationWriter(s.mouseX, s.mouseY)
+        
+        sg.popup("Done")
+        print("Done")
 
     elif event == 'Ok':
-        window['-OUTPUT-'].update('You successfully selected ' + values['-agentSelect-'])
-        
-        
+        window['-OUTPUT-'].update('You successfully selected ' +
+                                  values['-agentSelect-'])
+
         # Open the locations.txt and read all the coordinates into an array.
         with open("locations.txt") as file:
-            coordinates = [coordinates.strip() for coordinates in file.readlines()]
-
+            coordinates = [coordinates.strip()
+                           for coordinates in file.readlines()]
 
         # Astra
         astraMouseX = coordinates[0]
@@ -150,7 +159,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Breach
         if values['-agentSelect-'] == "Breach":
             sg.popup("You chose Breach.")
@@ -162,8 +170,7 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
-        # Brimstone 
+        # Brimstone
         elif values['-agentSelect-'] == "Brimstone":
             sg.popup("You chose Brimstone.")
             time.sleep(sleep)
@@ -173,7 +180,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Cypher
         elif values['-agentSelect-'] == "Cypher":
@@ -186,7 +192,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Jett
         elif values['-agentSelect-'] == "Jett":
             sg.popup("You chose Jett.")
@@ -197,7 +202,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Killjoy
         elif values['-agentSelect-'] == "Killjoy":
@@ -210,7 +214,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Omen
         elif values['-agentSelect-'] == "Omen":
             sg.popup("You chose Omen.")
@@ -221,7 +224,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Phoenix
         elif values['-agentSelect-'] == "Phoenix":
@@ -234,7 +236,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Raze
         elif values['-agentSelect-'] == "Raze":
             sg.popup("You chose Raze.")
@@ -245,7 +246,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Reyna
         elif values['-agentSelect-'] == "Reyna":
@@ -258,7 +258,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Sage
         elif values['-agentSelect-'] == "Sage":
             sg.popup("You chose Sage.")
@@ -269,7 +268,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Skye
         elif values['-agentSelect-'] == "Skye":
@@ -282,7 +280,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Sova
         elif values['-agentSelect-'] == "Sova":
             sg.popup("You chose Sova.")
@@ -293,7 +290,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # Viper
         elif values['-agentSelect-'] == "Viper":
@@ -306,7 +302,6 @@ while True:
                 pyautogui.click()
                 counter = counter + 1
 
-
         # Yoru
         elif values['-agentSelect-'] == "Yoru":
             sg.popup("You chose Yoru.")
@@ -317,7 +312,6 @@ while True:
                 pyautogui.moveTo(int(lockMouseX), int(lockMouseY))
                 pyautogui.click()
                 counter = counter + 1
-
 
         # InvalidAgent
         else:
