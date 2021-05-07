@@ -22,5 +22,5 @@ for val in v['fac']:
         
 #display string in a popup         
 psg.popup('Options Chosen',      
-            'You will Travel from :'+ v['board'] + ' to '+v['dest'] +' \nYour additional facilities are:' +strx[1:len(strx)-1] )
+            'You will Travel from :'+ v['board'] + ' to '+v['dest'] +' \nYour additional facilities are: ' +strx[1:len(strx)-1] )
 
