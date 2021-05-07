@@ -58,7 +58,7 @@ while True:
 
         locations = open("locations.txt", "w")
 
-        agents = ["Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze",
+        agents = ["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix", "Raze",
                   "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru", "LockIn"]
 
         for agent in agents:
