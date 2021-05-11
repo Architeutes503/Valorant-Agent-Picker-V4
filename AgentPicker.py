@@ -28,6 +28,7 @@ class LocationWriter:
         locations.write("\n")
 
 
+
 # Define the window's contents
 layout = [[sg.Text("Which agent do you want to play with?")],
           [sg.Combo(["Astra", "Breach", "Brimstone", "Cypher", "Jett", "Killjoy", "Omen", "Phoenix",
@@ -67,7 +68,7 @@ while True:
 
             s = LocationSaver(agent)
             w = LocationWriter(s.mouseX, s.mouseY)
-        
+
         sg.popup("Done")
         print("Done")
 
